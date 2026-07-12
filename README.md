@@ -41,6 +41,13 @@ https://lfc-cs-ai.github.io/
 
 For new publications, duplicate one `<article class="publication">...</article>` block in `index.html` and edit the title, authors, venue, year, and status.
 
+## Visitor analytics
+
+- Public visit-count dashboard: [Hits](https://hits.sh/lfc-cs-ai.github.io/academic-homepage/)
+- Repository traffic, unique visitors, referring sites, and popular URLs: [GitHub Insights → Traffic](https://github.com/LFC-CS-AI/LFC-CS-AI.github.io/graphs/traffic)
+
+The site uses a privacy-focused request counter and does not collect or publish visitors' IP addresses. GitHub Pages does not expose per-visitor server logs; exact IP or physical-address logging would require a separate backend and an appropriate privacy notice.
+
 ## Items to add later
 
 - ORCID link

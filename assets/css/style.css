@@ -500,6 +500,7 @@ a:focus-visible {
 
 .profile-links a {
   min-height: 43px;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 11px;
@@ -508,6 +509,7 @@ a:focus-visible {
   color: var(--ink);
   font-size: 0.92rem;
   font-weight: 680;
+  overflow-wrap: anywhere;
 }
 
 .profile-links a:hover,
@@ -529,6 +531,17 @@ a:focus-visible {
   font-weight: 900;
 }
 
+.profile-links .github-icon {
+  background: #24292f;
+}
+
+.profile-links .github-icon svg {
+  width: 16px;
+  height: 16px;
+  display: block;
+  fill: currentColor;
+}
+
 .site-footer {
   width: min(calc(100% - 40px), var(--max-width));
   margin: 0 auto;
@@ -536,6 +549,25 @@ a:focus-visible {
   color: var(--muted);
   font-size: 0.86rem;
   text-align: center;
+}
+
+.site-footer p {
+  margin: 0 0 12px;
+}
+
+.visitor-counter {
+  display: inline-flex;
+  border-radius: 4px;
+}
+
+.visitor-counter:focus-visible {
+  outline: 3px solid rgba(40, 85, 166, 0.25);
+  outline-offset: 4px;
+}
+
+.visitor-counter img {
+  height: 20px;
+  display: block;
 }
 
 @media (max-width: 900px) {
