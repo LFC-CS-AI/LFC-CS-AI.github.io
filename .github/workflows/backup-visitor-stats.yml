@@ -1,0 +1,42 @@
+name: Back up visitor statistics
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: visitor-statistics-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download and validate aggregate statistics
+        env:
+          VISITOR_STATS_URL: https://lfc-visitor-analytics.mature-steed.workers.dev/api/stats
+        run: |
+          curl --fail --silent --show-error --retry 3 "$VISITOR_STATS_URL" -o /tmp/visitor-stats.json
+          jq -e '(.total_visits | type == "number") and (.countries | type == "array")' /tmp/visitor-stats.json >/dev/null
+          jq '{total_visits, countries}' /tmp/visitor-stats.json > assets/data/visitor-stats-backup.json
+
+      - name: Commit a changed snapshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/data/visitor-stats-backup.json
+          if git diff --cached --quiet; then
+            echo "Visitor statistics are unchanged."
+          else
+            git commit -m "chore: back up visitor statistics"
+            git push origin main
+          fi

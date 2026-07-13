@@ -575,41 +575,123 @@ a:focus-visible {
   color: var(--muted);
 }
 
+.visitor-map-summary {
+  max-width: 560px;
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.visitor-map-summary p {
+  min-width: 0;
+  margin: 0;
+  padding: 14px 16px;
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  border: 1px solid #dbe5f7;
+  border-radius: 12px;
+  background: var(--accent-soft);
+}
+
+.visitor-map-summary strong {
+  color: var(--accent-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.7rem;
+  line-height: 1;
+}
+
+.visitor-map-summary span {
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
 .visitor-map-figure {
   margin: 25px 0 0;
 }
 
 .visitor-map-embed {
+  position: relative;
   width: 100%;
   min-width: 0;
-  min-height: 160px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  aspect-ratio: 960 / 500;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 14px;
-  background:
-    radial-gradient(circle at 50% 45%, rgba(40, 85, 166, 0.18), transparent 44%),
-    #101b33;
+  background: #101b33;
 }
 
-.visitor-map-embed > span {
-  position: relative;
-  max-width: 100%;
-  margin-right: 0 !important;
-  cursor: pointer;
-}
-
-.visitor-map-loading {
+.visitor-map-status {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
   margin: 0;
-  padding: 68px 20px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #d8e5ff;
   text-align: center;
 }
 
-.visitor-map-loaded .visitor-map-loading {
+.visitor-map-ready .visitor-map-status {
   display: none;
+}
+
+.visitor-map-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.visitor-map-ocean {
+  fill: #101b33;
+  stroke: rgba(190, 211, 247, 0.32);
+  stroke-width: 1;
+}
+
+.visitor-map-graticule {
+  fill: none;
+  stroke: rgba(174, 199, 239, 0.13);
+  stroke-width: 0.75;
+}
+
+.visitor-map-country {
+  fill: #263957;
+  stroke: rgba(194, 213, 244, 0.45);
+  stroke-width: 0.8;
+  vector-effect: non-scaling-stroke;
+}
+
+.visitor-map-country.has-visits {
+  fill: #426da9;
+}
+
+.visitor-map-marker-halo {
+  fill: rgba(255, 200, 87, 0.26);
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: visitor-map-pulse 2.4s ease-out infinite;
+}
+
+.visitor-map-marker-dot {
+  fill: #ffc857;
+  stroke: #fff6dd;
+  stroke-width: 1.8;
+  vector-effect: non-scaling-stroke;
+}
+
+@keyframes visitor-map-pulse {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.88);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.12);
+  }
 }
 
 .visitor-map-figure figcaption {
@@ -618,6 +700,52 @@ a:focus-visible {
   color: var(--muted);
   font-size: 0.87rem;
   line-height: 1.55;
+}
+
+.visitor-map-data-note {
+  min-height: 1.5em;
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.visitor-country-list {
+  margin: 16px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 8px 18px;
+  list-style: none;
+}
+
+.visitor-country-list li {
+  min-width: 0;
+  padding: 9px 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.visitor-country-list strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.visitor-country-key {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ffc857;
+  box-shadow: 0 0 0 4px rgba(255, 200, 87, 0.2);
+}
+
+.visitor-country-list .visitor-country-empty {
+  display: block;
+  grid-column: 1 / -1;
 }
 
 .visitor-map-links,
@@ -656,19 +784,9 @@ a:focus-visible {
   margin: 0 0 12px;
 }
 
-.visitor-counter {
-  display: inline-flex;
-  border-radius: 4px;
-}
-
-.visitor-counter:focus-visible {
-  outline: 3px solid rgba(40, 85, 166, 0.25);
-  outline-offset: 4px;
-}
-
-.visitor-counter img {
-  height: 20px;
-  display: block;
+.visitor-counter-text strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
 }
 
 .footer-privacy-link {
@@ -790,8 +908,8 @@ a:focus-visible {
     padding: 30px 18px;
   }
 
-  .visitor-map-embed {
-    min-height: 130px;
+  .visitor-map-summary {
+    grid-template-columns: 1fr;
   }
 
   .privacy-shell {
@@ -855,7 +973,7 @@ a:focus-visible {
     transition: none;
   }
 
-  .visitor-map-embed span img {
+  .visitor-map-marker-halo {
     animation: none !important;
   }
 }

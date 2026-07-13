@@ -28,38 +28,49 @@
 
       <h2>What the public map shows</h2>
       <p>
-        The homepage displays a third-party visitor map provided by whos.amung.us.
-        It shows approximate country- or region-level locations for current and some
-        recent visits. The public website does not display a visitor's exact IP address,
-        name, email address, or street address.
+        The homepage shows cumulative visits grouped by country or region. Bright map
+        markers are approximate and never represent a street address or a visitor's
+        exact position. Network routing, VPNs, and proxies can make a country estimate
+        inaccurate.
       </p>
 
-      <h2>Data processed by the map provider</h2>
+      <h2>What is retained</h2>
       <p>
-        When the map loads, the provider receives standard request information such as
-        the visitor's IP address, the page URL, and browser or operating-system details.
-        The provider states that it anonymizes IP addresses by zeroing the final octet
-        and aggregates non-personally-identifiable visit data after approximately 20 days.
-        Its service and advertising partners may use cookies or similar technology.
+        The visitor analytics database stores an ISO two-letter country or region code,
+        a cumulative count, daily aggregate counts, and the time that a country or region
+        was last recorded. It does not store raw IP addresses, names, email addresses,
+        cities, postal codes, latitude or longitude, or street addresses.
       </p>
       <p>
-        Read the provider's
-        <a href="https://whos.amung.us/legal/privacy/" target="_blank" rel="noopener noreferrer">privacy policy</a>
-        and <a href="https://whos.amung.us/legal/terms/" target="_blank" rel="noopener noreferrer">terms</a>.
+        These aggregate records have no automatic expiry. They remain available unless
+        the site owner deletes the Cloudflare D1 database or the associated account.
+        A public daily snapshot of the same aggregate totals is also kept in the website
+        repository so the latest retained totals can still be shown during a service outage.
       </p>
 
-      <h2>Cumulative page-load counter</h2>
+      <h2>How the country or region is determined</h2>
       <p>
-        The footer also loads a Hits badge to show a cumulative page-load count. It is
-        separate from the recent visitor map, so the two displays use different counting
-        methods and should not be expected to match.
+        The site sends a request to a Cloudflare Worker. Like other web infrastructure,
+        Cloudflare receives standard network request information and derives an approximate
+        country or region code. The site's Worker writes only that code and aggregate counts
+        to D1; it does not write the incoming IP address to the analytics database.
+        Cloudflare's handling of service data is described in its
+        <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">privacy policy</a>.
+      </p>
+
+      <h2>How repeat visits are limited</h2>
+      <p>
+        After a visit is recorded, the browser stores only the UTC calendar date in local
+        storage. The page uses that date to avoid adding another visit from the same browser
+        on the same day. Clearing browser storage, using another browser or device, or blocking
+        local storage can change this behavior, so the number is a page-visit measure rather
+        than a guaranteed count of unique people.
       </p>
 
       <h2>Your choice</h2>
       <p>
-        You can prevent these third-party analytics requests by blocking third-party
-        content or cookies in your browser. If blocked, the map or counter may not load
-        and the visit will not appear in those displays.
+        You can block the analytics request or disable JavaScript. If blocked, the visit is
+        not added; the latest daily aggregate backup may still be displayed on the map.
       </p>
 
       <h2>Contact</h2>

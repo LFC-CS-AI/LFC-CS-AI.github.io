@@ -12,6 +12,9 @@
   <title>Fengchi Liu | Academic Homepage</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/style.css">
+  <script defer src="assets/vendor/d3-array.min.js"></script>
+  <script defer src="assets/vendor/d3-geo.min.js"></script>
+  <script defer src="assets/js/visitor-map.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -247,28 +250,38 @@
     <section class="visitor-map-card" id="visitor-map" aria-labelledby="visitor-map-title">
       <div class="visitor-map-heading">
         <p class="section-kicker">Global Reach</p>
-        <h2 id="visitor-map-title">Recent Visitor Map</h2>
-        <p>New and recent visits appear as blinking markers on the world map.</p>
+        <h2 id="visitor-map-title">All-time Visitor Map</h2>
+        <p>Country- and region-level totals are retained in persistent storage.</p>
+      </div>
+      <div class="visitor-map-summary" aria-live="polite">
+        <p><strong id="visitor-total">—</strong><span>recorded visits</span></p>
+        <p><strong id="visitor-location-total">—</strong><span>countries / regions</span></p>
       </div>
       <figure class="visitor-map-figure">
         <div
           class="visitor-map-embed"
           id="visitor-map-embed"
           role="img"
-          aria-label="World map showing approximate locations of recent website visitors"
+          aria-label="World map showing cumulative country-level website visits"
         >
-          <p class="visitor-map-loading">Loading the live visitor map…</p>
-          <script id="_wauvisitorMap" src="assets/js/visitor-map.js"></script>
-          <script async src="https://waust.at/m.js"></script>
-          <noscript><p>Please enable JavaScript to view the live visitor map.</p></noscript>
+          <p class="visitor-map-status" id="visitor-map-status">Loading the permanent visitor history…</p>
+          <svg
+            class="visitor-map-svg"
+            id="visitor-map-svg"
+            viewBox="0 0 960 500"
+            preserveAspectRatio="xMidYMid meet"
+            aria-hidden="true"
+          ></svg>
+          <noscript><p class="visitor-map-status">Please enable JavaScript to view the visitor map.</p></noscript>
         </div>
         <figcaption>
-          Markers show approximate country- or region-level locations, not exact addresses.
-          This map includes current and some recent visitors rather than a permanent all-time history.
+          Bright markers show approximate country- or region-level totals, not exact addresses.
+          A browser is counted at most once per day when persistent storage is available.
         </figcaption>
       </figure>
+      <p class="visitor-map-data-note" id="visitor-map-data-note" aria-live="polite"></p>
+      <ul class="visitor-country-list" id="visitor-country-list" aria-label="Cumulative visits by country or region"></ul>
       <div class="visitor-map-links">
-        <a href="https://whos.amung.us/stats/lfcowcvt9czb/" target="_blank" rel="noopener noreferrer">View country-level visitor statistics</a>
         <a href="privacy.html">Visitor privacy notice</a>
       </div>
     </section>
@@ -277,9 +290,7 @@
   <footer class="site-footer">
     <p>© 2026 Fengchi Liu. Built with plain HTML and CSS and hosted on GitHub Pages.</p>
     <div class="footer-links">
-      <a class="visitor-counter" href="https://hits.sh/lfc-cs-ai.github.io/academic-homepage/" target="_blank" rel="noopener noreferrer" aria-label="Open cumulative website visit statistics">
-        <img src="https://hits.sh/lfc-cs-ai.github.io/academic-homepage.svg?style=flat-square&amp;label=total%20page%20loads&amp;color=2855a6&amp;labelColor=172033" alt="Cumulative website page-load count" referrerpolicy="no-referrer">
-      </a>
+      <span class="visitor-counter-text"><strong id="footer-visitor-total">—</strong> recorded visits</span>
       <a class="footer-privacy-link" href="privacy.html">Visitor privacy</a>
     </div>
   </footer>

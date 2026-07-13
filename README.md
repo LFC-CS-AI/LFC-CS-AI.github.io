@@ -43,11 +43,18 @@ For new publications, duplicate one `<article class="publication">...</article>`
 
 ## Visitor analytics
 
-- Recent visitor map and public country-level statistics: [whos.amung.us](https://whos.amung.us/stats/lfcowcvt9czb/)
-- Cumulative page-load dashboard: [Hits](https://hits.sh/lfc-cs-ai.github.io/academic-homepage/)
-- Repository traffic, unique visitors, referring sites, and popular URLs: [GitHub Insights → Traffic](https://github.com/LFC-CS-AI/LFC-CS-AI.github.io/graphs/traffic)
+- Persistent aggregate backend: Cloudflare Worker + D1 in `visitor-analytics-worker/`
+- Public world map: Natural Earth geometry rendered with D3 Geo
+- Daily aggregate fallback: `assets/data/visitor-stats-backup.json`
+- Repository traffic, referring sites, and popular URLs: [GitHub Insights → Traffic](https://github.com/LFC-CS-AI/LFC-CS-AI.github.io/graphs/traffic)
 
-The map shows approximate country- or region-level locations for current and some recent visitors; it is not a permanent all-time map. The public website does not display exact IP addresses or physical addresses. The map and the cumulative page-load badge use separate third-party services, so their counts use different methods and will not match. See `privacy.html` for the visitor analytics disclosure.
+The map permanently retains cumulative visits by approximate country or region. The analytics database does not store raw IP addresses, cities, coordinates, or physical addresses. Each browser is counted at most once per UTC day when local storage is available. A scheduled GitHub Action keeps a second aggregate snapshot in the repository. See `privacy.html` for the full disclosure.
+
+To rebuild the map geometry, download Natural Earth's `ne_110m_admin_0_countries.geojson` and run:
+
+```bash
+node scripts/prepare-world-map.js path/to/ne_110m_admin_0_countries.geojson assets/maps/world-countries-110m.geojson
+```
 
 ## Items to add later
 
