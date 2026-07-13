@@ -43,10 +43,11 @@ For new publications, duplicate one `<article class="publication">...</article>`
 
 ## Visitor analytics
 
-- Public visit-count dashboard: [Hits](https://hits.sh/lfc-cs-ai.github.io/academic-homepage/)
+- Recent visitor map and public country-level statistics: [whos.amung.us](https://whos.amung.us/stats/lfcowcvt9czb/)
+- Cumulative page-load dashboard: [Hits](https://hits.sh/lfc-cs-ai.github.io/academic-homepage/)
 - Repository traffic, unique visitors, referring sites, and popular URLs: [GitHub Insights → Traffic](https://github.com/LFC-CS-AI/LFC-CS-AI.github.io/graphs/traffic)
 
-The site uses a privacy-focused request counter and does not collect or publish visitors' IP addresses. GitHub Pages does not expose per-visitor server logs; exact IP or physical-address logging would require a separate backend and an appropriate privacy notice.
+The map shows approximate country- or region-level locations for current and some recent visitors; it is not a permanent all-time map. The public website does not display exact IP addresses or physical addresses. The map and the cumulative page-load badge use separate third-party services, so their counts use different methods and will not match. See `privacy.html` for the visitor analytics disclosure.
 
 ## Items to add later
 
