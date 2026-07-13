@@ -220,6 +220,11 @@ a:focus-visible {
   position: relative;
   z-index: 4;
   display: grid;
+  gap: 34px;
+}
+
+.content-grid {
+  display: grid;
   grid-template-columns: minmax(0, 1fr) 310px;
   gap: 34px;
   align-items: start;
@@ -543,7 +548,6 @@ a:focus-visible {
 }
 
 .visitor-map-card {
-  grid-column: 1 / -1;
   min-width: 0;
   padding: 38px 42px;
   scroll-margin-top: 88px;
@@ -714,7 +718,7 @@ a:focus-visible {
 }
 
 @media (max-width: 900px) {
-  .page-shell {
+  .content-grid {
     grid-template-columns: 1fr;
   }
 
