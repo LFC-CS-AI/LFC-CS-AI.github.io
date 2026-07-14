@@ -1,4 +1,10 @@
 {
-  "total_visits": 0,
-  "countries": []
+  "total_visits": 3,
+  "countries": [
+    {
+      "country_code": "US",
+      "visits": 3,
+      "last_seen": "2026-07-14T03:32:08.275Z"
+    }
+  ]
 }
