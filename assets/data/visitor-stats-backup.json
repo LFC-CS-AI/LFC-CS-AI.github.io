@@ -1,5 +1,5 @@
 {
-  "total_visits": 65,
+  "total_visits": 66,
   "countries": [
     {
       "country_code": "US",
@@ -10,6 +10,11 @@
       "country_code": "HK",
       "visits": 1,
       "last_seen": "2026-08-02T13:44:27.013Z"
+    },
+    {
+      "country_code": "JP",
+      "visits": 1,
+      "last_seen": "2026-09-20T16:22:44.595Z"
     }
   ]
 }
