@@ -463,9 +463,9 @@ a:focus-visible {
 
 .profile-photo {
   width: 100%;
-  aspect-ratio: 1000 / 1393;
+  aspect-ratio: 1;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
   background: #f6f6f6;
 }
