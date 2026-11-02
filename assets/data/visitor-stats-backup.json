@@ -1,10 +1,20 @@
 {
-  "total_visits": 76,
+  "total_visits": 82,
   "countries": [
     {
       "country_code": "US",
-      "visits": 73,
-      "last_seen": "2026-10-19T11:17:19.528Z"
+      "visits": 77,
+      "last_seen": "2026-11-02T03:14:04.123Z"
+    },
+    {
+      "country_code": "AU",
+      "visits": 1,
+      "last_seen": "2026-11-01T16:28:27.630Z"
+    },
+    {
+      "country_code": "BD",
+      "visits": 1,
+      "last_seen": "2026-11-01T16:53:23.520Z"
     },
     {
       "country_code": "CA",
