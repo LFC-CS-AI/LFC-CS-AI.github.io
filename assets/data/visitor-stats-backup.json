@@ -1,20 +1,25 @@
 {
-  "total_visits": 82,
+  "total_visits": 93,
   "countries": [
     {
       "country_code": "US",
-      "visits": 77,
-      "last_seen": "2026-11-02T03:14:04.123Z"
+      "visits": 80,
+      "last_seen": "2026-11-03T01:29:14.179Z"
     },
     {
       "country_code": "AU",
-      "visits": 1,
-      "last_seen": "2026-11-01T16:28:27.630Z"
+      "visits": 6,
+      "last_seen": "2026-11-03T07:26:56.593Z"
     },
     {
       "country_code": "BD",
       "visits": 1,
       "last_seen": "2026-11-01T16:53:23.520Z"
+    },
+    {
+      "country_code": "BR",
+      "visits": 1,
+      "last_seen": "2026-11-02T16:09:04.691Z"
     },
     {
       "country_code": "CA",
@@ -30,6 +35,16 @@
       "country_code": "JP",
       "visits": 1,
       "last_seen": "2026-09-20T16:22:44.595Z"
+    },
+    {
+      "country_code": "NZ",
+      "visits": 1,
+      "last_seen": "2026-11-03T07:26:04.912Z"
+    },
+    {
+      "country_code": "SG",
+      "visits": 1,
+      "last_seen": "2026-11-02T09:55:18.338Z"
     }
   ]
 }
